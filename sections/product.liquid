@@ -1,0 +1,29 @@
+<section data-section-id="{{ section.id }}" data-section-type="product">
+  <div class="flex mb-4">
+    {% for p in product.variants %}
+      <div class="w-[400px] h-[300px] border p-16  ">
+        <img src="{{ product.featured_image | image_url }}">
+        <h1 class="text-2xl">color: {{ p.title }}</h1>
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ p.id }}">
+
+          <input type="submit" value="Add to cart" class="btn border bg-lime-950	text-white">
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+<script src="{{ "cart.js" | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Product pages",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show social sharing buttons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

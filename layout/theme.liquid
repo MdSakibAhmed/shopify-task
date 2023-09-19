@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    {{ 'cart.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'cart.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+  </head>
+  <body>
+    <!-- header -->
+    {% section 'header' %}
+
+    <!-- layout -->
+
+    <main>{{ content_for_layout }}</main>
+    {% section 'cart-drawer' %}
+
+    <!-- footer -->
+    {% section 'footer' %}
+  </body>
+</html>
